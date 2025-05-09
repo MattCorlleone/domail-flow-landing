@@ -92,8 +92,10 @@ const PlanManagement = () => {
                   variant={plan.id === 'professional' ? 'default' : 'outline'}
                   className="w-full"
                 >
-                  {currentPlan === 'professional' || plan.id === 'basic' 
-                    ? 'Fazer Downgrade' 
+                  {plan.id === 'professional' && currentPlan !== 'professional'
+                    ? 'Fazer Upgrade' 
+                    : plan.id === 'basic' || (currentPlan === 'professional' && plan.id !== 'professional')
+                    ? 'Fazer Downgrade'
                     : 'Fazer Upgrade'}
                 </Button>
               )}
