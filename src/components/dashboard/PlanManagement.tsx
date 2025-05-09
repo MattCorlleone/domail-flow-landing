@@ -45,6 +45,19 @@ const PlanManagement = () => {
     },
   ];
 
+  // Helper function to determine plan hierarchy
+  const getPlanRank = (planId: string): number => {
+    const ranks = { basic: 1, essential: 2, professional: 3 };
+    return ranks[planId as keyof typeof ranks] || 0;
+  };
+
+  // Determine if a plan is an upgrade or downgrade based on current plan
+  const isPlanUpgrade = (planId: string): boolean => {
+    const currentRank = getPlanRank(currentPlan);
+    const targetRank = getPlanRank(planId);
+    return targetRank > currentRank;
+  };
+
   return (
     <div className="space-y-6">
       <div>
@@ -92,11 +105,7 @@ const PlanManagement = () => {
                   variant={plan.id === 'professional' ? 'default' : 'outline'}
                   className="w-full"
                 >
-                  {plan.id === 'professional' && currentPlan !== 'professional'
-                    ? 'Fazer Upgrade' 
-                    : plan.id === 'basic' || (currentPlan === 'professional' && plan.id !== 'professional')
-                    ? 'Fazer Downgrade'
-                    : 'Fazer Upgrade'}
+                  {isPlanUpgrade(plan.id) ? 'Fazer Upgrade' : 'Fazer Downgrade'}
                 </Button>
               )}
             </CardFooter>
