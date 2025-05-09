@@ -9,24 +9,20 @@ const Hero = () => {
           <div className="lg:col-span-6">
             <div className="text-center lg:text-left md:max-w-2xl md:mx-auto lg:mx-0">
               <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                <span className="block">Domain & Email</span>
-                <span className="block text-primary">Made Simple</span>
+                <span className="block">Domínios & Email</span>
+                <span className="block text-primary">Simplificado</span>
               </h1>
               <p className="mt-6 text-lg text-gray-600">
-                Professional domain hosting and email services powered by HestiaCP.
-                Fast, secure, and reliable hosting for your business needs.
+                Hospedagem profissional de domínios e serviços de e-mail
               </p>
-              <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-                <div className="rounded-md shadow">
-                  <Button size="lg" className="px-8 py-6 text-base">
-                    Start for free
-                  </Button>
-                </div>
-                <div className="mt-3 sm:mt-0 sm:ml-3">
-                  <a href="#plans" className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
-                    View plans
-                  </a>
-                </div>
+              <div className="mt-10 flex flex-col sm:flex-row sm:justify-center lg:justify-start sm:space-x-3">
+                <Button size="lg" className="shadow px-8 text-base">
+                  Comece grátis
+                </Button>
+
+                <Button variant="outline" size="lg" className="shadow px-10 text-base" asChild>
+                  <a href="#plans">Ver planos</a>
+                </Button>
               </div>
             </div>
           </div>

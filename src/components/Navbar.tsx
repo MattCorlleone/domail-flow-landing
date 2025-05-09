@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -48,24 +48,24 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <div className="flex items-center">
-            <Link to="/" className="text-primary font-bold text-xl md:text-2xl">
-              DomainFlow
-            </Link>
+            <a href="/" className="text-primary font-bold text-xl md:text-2xl">
+              EquilibriumDomain
+            </a>
           </div>
-          
+
           <nav className="hidden md:flex space-x-10 items-center">
-            <Link to="/#features" className="font-medium text-gray-700 hover:text-primary transition-colors">
-              Features
-            </Link>
-            <Link to="/#plans" className="font-medium text-gray-700 hover:text-primary transition-colors">
-              Plans
-            </Link>
-            <Link to="/#about" className="font-medium text-gray-700 hover:text-primary transition-colors">
-              About
-            </Link>
-            <Link to="/#contact" className="font-medium text-gray-700 hover:text-primary transition-colors">
-              Contact
-            </Link>
+            <a href="/#features" className="font-medium text-gray-700 hover:text-primary transition-colors">
+              Recursos
+            </a>
+            <a href="/#plans" className="font-medium text-gray-700 hover:text-primary transition-colors">
+              Planos
+            </a>
+            <a href="/#about" className="font-medium text-gray-700 hover:text-primary transition-colors">
+              Sobre
+            </a>
+            <a href="/#contact" className="font-medium text-gray-700 hover:text-primary transition-colors">
+              Contato
+            </a>
           </nav>
 
           <div className="flex items-center">
@@ -76,18 +76,24 @@ const Navbar = () => {
                     Minha Conta
                   </Button>
                 </Link>
-                <Button onClick={handleLogout}>
-                  Sair
-                </Button>
+                <Link to="/">
+                  <Button onClick={handleLogout}>
+                    Sair
+                  </Button>
+                </Link>
               </>
             ) : (
               <>
-                <Button variant="outline" className="mr-3 hidden md:inline-flex" onClick={handleLogin}>
-                  Login
-                </Button>
-                <Button>
-                  Começar
-                </Button>
+                <Link to="/dashboard">
+                  <Button variant="outline" className="mr-3 hidden md:inline-flex" onClick={handleLogin}>
+                    Login
+                  </Button>
+                </Link>
+                <a href="/#plans">
+                  <Button>
+                    Começar
+                  </Button>
+                </a>
               </>
             )}
           </div>

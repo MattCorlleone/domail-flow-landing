@@ -5,48 +5,84 @@ import { Check } from "lucide-react";
 const Pricing = () => {
   const plans = [
     {
-      name: "Basic",
-      price: "R$ 29.90",
-      description: "Perfect for personal websites and small projects.",
+      name: "Básico",
+      price: "R$ 29,99",
+      description: "Recursos essenciais para projetos pequenos e/ou pessoais.",
       features: [
-        "1 domain included",
-        "2 email accounts",
-        "1 GB of storage",
-        "2 subdomains",
-        "Free SSL certificate",
+        "Domínios: 1",
+        "vCPU: 2 cores",
+        "RAM: 5 GB DDR4",
+        "Armazenamento SSD NVMe: 15 GB",
+        "Subdomínios: Ilimitados",
+        "Rede: 1 Gbps",
+        "Web Server: OpenLiteSpeed + LSCache",
+        "CloudLinux: Sim",
+        "Backups: a cada 12 h",
+        "SSL: Let’s Encrypt gratuito",
+        "E-mail profissional: 10 contas",
+        "AntiSpam Pro: SpamAssassin + ClamAV",
+        "Webmail: Roundcube integrado",
+        "FTP: Contas FTP ilimitadas",
+        "Banco de dados: MySQL/MariaDB + Adminer",
+        "Cron Jobs: 2",
+        "1-Clique WordPress: WP-CLI ou Softaculous (opc.)",
+        "Plugins Premium Grátis: Sim (via Softaculous/CLI)",
       ],
-      cta: "Get Started",
+      cta: "Assinar Básico",
       popular: false,
     },
     {
-      name: "Essential",
-      price: "R$ 39.90",
-      description: "Ideal for growing businesses and professionals.",
+      name: "Essencial",
+      price: "R$ 39,99",
+      description: "Ideal para projetos de médio porte.",
       features: [
-        "1 domain included",
-        "5 email accounts",
-        "3 GB of storage",
-        "5 subdomains",
-        "Free SSL certificate",
-        "Priority support",
+        "Domínios: 2",
+        "vCPU: 2 cores",
+        "RAM: 5 GB DDR4",
+        "Armazenamento SSD NVMe: 25 GB",
+        "Subdomínios: Ilimitados",
+        "Rede: 1 Gbps",
+        "Web Server: OpenLiteSpeed + LSCache",
+        "CloudLinux: Sim",
+        "Backups: a cada 12 h",
+        "SSL: Let’s Encrypt gratuito",
+        "E-mail profissional: 25 contas",
+        "AntiSpam Pro: SpamAssassin + ClamAV",
+        "Webmail: Roundcube integrado",
+        "FTP: Contas FTP ilimitadas",
+        "Banco de dados: MySQL/MariaDB + Adminer",
+        "Cron Jobs: 5",
+        "1-Clique WordPress: WP-CLI ou Softaculous (opc.)",
+        "Plugins Premium Grátis: Sim (via Softaculous/CLI)",
       ],
-      cta: "Get Started",
+      cta: "Assinar Essencial",
       popular: true,
     },
     {
-      name: "Professional",
-      price: "R$ 59.90",
-      description: "For businesses with advanced hosting needs.",
+      name: "Profissional",
+      price: "R$ 59,99",
+      description: "Para empresas e projetos avançados.",
       features: [
-        "2 domains included",
-        "10 email accounts",
-        "5 GB of storage",
-        "Unlimited subdomains",
-        "Free SSL certificate",
-        "Priority support",
-        "Daily backups",
+        "Domínios: 3",
+        "vCPU: 2 cores",
+        "RAM: 5 GB DDR4",
+        "Armazenamento SSD NVMe: 50 GB",
+        "Subdomínios: Ilimitados",
+        "Rede: 1 Gbps",
+        "Web Server: OpenLiteSpeed + LSCache",
+        "CloudLinux: Sim",
+        "Backups: a cada 12 h",
+        "SSL: Let’s Encrypt gratuito",
+        "E-mail profissional: 50 contas",
+        "AntiSpam Pro: SpamAssassin + ClamAV",
+        "Webmail: Roundcube integrado",
+        "FTP: Contas FTP ilimitadas",
+        "Banco de dados: MySQL/MariaDB + Adminer",
+        "Cron Jobs: 10",
+        "1-Clique WordPress: WP-CLI ou Softaculous (opc.)",
+        "Plugins Premium Grátis: Sim (via Softaculous/CLI)",
       ],
-      cta: "Get Started",
+      cta: "Assinar Profissional",
       popular: false,
     },
   ];
@@ -55,24 +91,24 @@ const Pricing = () => {
     <div id="plans" className="bg-gray-50 py-16 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
-          <h2 className="text-base text-primary font-semibold tracking-wide uppercase">Pricing</h2>
+          <h2 className="text-base text-primary font-semibold tracking-wide uppercase">Planos</h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            Plans for businesses of all sizes
+            Planos para empresas de todos os tamanhos
           </p>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            Choose the perfect plan for your needs. All plans include HestiaCP control panel and 24/7 support.
+            Escolha o plano perfeito para suas necessidades. Todos os planos
+            incluem painel de controle e suporte 24/7.
           </p>
         </div>
 
         <div className="mt-16 grid gap-8 lg:grid-cols-3">
           {plans.map((plan) => (
-            <div 
+            <div
               key={plan.name}
-              className={`flex flex-col rounded-lg shadow-lg overflow-hidden ${
-                plan.popular 
-                  ? "border-2 border-primary ring-2 ring-primary ring-opacity-20 transform lg:-translate-y-2" 
-                  : "border border-gray-200"
-              }`}
+              className={`flex flex-col rounded-lg shadow-lg overflow-hidden ${plan.popular
+                ? "border-2 border-primary ring-2 ring-primary ring-opacity-20 transform lg:-translate-y-2"
+                : "border border-gray-200"
+                }`}
             >
               <div className="px-6 py-8 bg-white sm:p-10 sm:pb-6">
                 {plan.popular && (
@@ -82,7 +118,7 @@ const Pricing = () => {
                 )}
                 <div className="flex items-baseline">
                   <span className="text-4xl font-bold tracking-tight text-gray-900">{plan.price}</span>
-                  <span className="ml-1 text-xl font-medium text-gray-500">/month</span>
+                  <span className="ml-1 text-xl font-medium text-gray-500">/mês</span>
                 </div>
                 <h3 className="mt-2 text-xl font-semibold text-gray-900">{plan.name}</h3>
                 <p className="mt-3 text-base text-gray-500">{plan.description}</p>
@@ -99,8 +135,8 @@ const Pricing = () => {
                   ))}
                 </ul>
                 <div className={`${plan.popular ? "" : "mt-auto"}`}>
-                  <Button 
-                    variant={plan.popular ? "default" : "outline"} 
+                  <Button
+                    variant={plan.popular ? "default" : "outline"}
                     className="w-full py-5 text-base"
                   >
                     {plan.cta}
