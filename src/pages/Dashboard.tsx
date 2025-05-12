@@ -1,64 +1,58 @@
 
-import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import ClientDashboard from "@/components/dashboard/ClientDashboard";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ClientDashboard from "@/components/dashboard/ClientDashboard";
-import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
-  // In a real app, this would be fetched from an auth provider
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   useEffect(() => {
-    // Simulate authentication check
-    const checkAuth = () => {
-      // For demo purposes, we'll just set to true
-      // In a real app, you would check if the user is authenticated
-      setTimeout(() => {
-        setIsLoggedIn(true);
-        setIsLoading(false);
-      }, 1000);
+    // Check authentication status (simulated)
+    const checkAuth = async () => {
+      // Simulate a brief delay to check auth
+      await new Promise(resolve => setTimeout(resolve, 500));
+      const isLoggedIn = localStorage.getItem("demo-user-session") === "true";
+      setIsAuthenticated(isLoggedIn);
+      
+      // If not authenticated, redirect to home page
+      if (!isLoggedIn) {
+        navigate("/");
+      }
     };
-
+    
     checkAuth();
-  }, []);
+  }, [navigate]);
 
-  if (isLoading) {
+  // Show loading while checking auth
+  if (isAuthenticated === null) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
       </div>
     );
   }
 
-  if (!isLoggedIn) {
-    return (
-      <div className="min-h-screen">
+  // Only show dashboard if authenticated
+  return (
+    <>
+      <Helmet>
+        <title>Painel do Cliente | EquilibriumDomain</title>
+        <meta name="description" content="Acesse seu painel de controle na EquilibriumDomain para gerenciar planos, configurações e pagamentos." />
+        <meta name="robots" content="noindex,nofollow" />
+      </Helmet>
+      
+      <div className="min-h-screen bg-gray-50 flex flex-col">
         <Navbar />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-          <h1 className="text-3xl font-bold text-gray-900 mb-6">Acesso Restrito</h1>
-          <p className="text-lg text-gray-600 mb-8">
-            Por favor, faça login para acessar sua área de cliente.
-          </p>
-          <div className="flex justify-center gap-4">
-            <Button>Login</Button>
-            <Button variant="outline">Criar Conta</Button>
-          </div>
-        </div>
+        <main className="flex-grow pt-16">
+          <ClientDashboard />
+        </main>
         <Footer />
       </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <ClientDashboard />
-      </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 
