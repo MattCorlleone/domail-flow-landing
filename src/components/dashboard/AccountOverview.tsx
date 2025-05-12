@@ -2,12 +2,22 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-const AccountOverview = () => {
+interface AccountOverviewProps {
+  userData: {
+    name: string;
+    email: string;
+    planId: string;
+    memberSince: string;
+    nextBillingDate: string;
+  };
+}
+
+const AccountOverview = ({ userData }: AccountOverviewProps) => {
   // Mock data for the account - in a real app, fetch this from API
   const user = {
-    name: "João Silva",
-    email: "joao.silva@exemplo.com",
-    plan: "Essential",
+    name: userData?.name || "João Silva",
+    email: userData?.email || "joao.silva@exemplo.com",
+    plan: userData?.planId || "Essential",
     planPrice: "R$ 39,90",
     domains: ["meusite.com.br"],
     storage: {
